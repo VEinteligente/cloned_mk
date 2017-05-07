@@ -37,6 +37,9 @@ class Runnable : public NonCopyable, public NonMovable {
     std::string probe_asn = "AS0";
     std::string probe_cc = "ZZ";
     std::string resolver_ip = "127.0.0.1";
+
+    report::Entry annotations;
+    
     bool needs_input = false;
 
   protected:

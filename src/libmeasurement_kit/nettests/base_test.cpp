@@ -42,6 +42,21 @@ BaseTest &BaseTest::increase_verbosity() {
 BaseTest::BaseTest() {}
 BaseTest::~BaseTest() {}
 
+
+BaseTest &BaseTest::add_annotations(std::string s) {
+    
+    size_t pos = 0;
+    std::string token;
+    
+    while ((pos = s.find('=')) != std::string::npos) {
+        token = s.substr(0, pos);
+        s.erase(0, pos+1);
+        runnable->annotations[token] = s.substr( 0, s.find(','));
+    }
+
+    return *this;
+}
+
 BaseTest &BaseTest::add_input_filepath(std::string s) {
     runnable->input_filepaths.push_back(s);
     return *this;
