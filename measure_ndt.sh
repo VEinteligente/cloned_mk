@@ -11,13 +11,12 @@
 SCRIPT=$(readlink -f "$0")
 # Absolute path this script is in, thus /home/user/bin
 SCRIPTPATH=$(dirname "$SCRIPT")
-PROBEID=$1
+PROBEID=$(cat $1)
 
 cd $SCRIPTPATH
 
 # Executes the NDT test and sends the report.
-./measurement_kit -a probeid=$PROBEID ndt
-#-c httpo://vowqsydjizhxdr67.onion ndt
+./measurement_kit -a probeid=$PROBEID -c httpo://vowqsydjizhxdr67.onion ndt
 
 # Removes all njson created.
 #rm *.njson
